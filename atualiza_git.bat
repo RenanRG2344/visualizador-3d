@@ -1,7 +1,14 @@
 @echo off
 cd /d "C:\Users\renan\3D Objects\projetos"
 
-echo Adicionando arquivos...
+echo ================================
+echo  🔄 Sincronizando com GitHub...
+echo ================================
+git pull origin main --allow-unrelated-histories
+
+echo ================================
+echo  ➕ Adicionando arquivos...
+echo ================================
 git add .
 
 :: Gera a data e hora atual para o commit
@@ -17,12 +24,16 @@ for /f "tokens=1-2 delims=: " %%a in ("%time%") do (
 
 set MSG=Atualização em %DIA%/%MES%/%ANO% às %HORA%h%MIN%min
 
-echo Fazendo commit...
+echo ================================
+echo  📝 Fazendo commit...
+echo ================================
 git commit -m "%MSG%"
 
-echo Enviando para o GitHub...
+echo ================================
+echo  🚀 Enviando para o GitHub...
+echo ================================
 git push origin main
 
 echo.
-echo ✅ Projeto atualizado com sucesso!
+echo ✅ Projeto sincronizado com sucesso!
 pause
